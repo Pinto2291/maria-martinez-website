@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Replace with Maria's actual WhatsApp number including country code (e.g., 58412XXXXXXX for Venezuela)
-            const whatsappNumber = "TUNUMERODEWHATSAPP"; // IMPORTANT: REPLACE THIS
+            const whatsappNumber = "584121463451"; // IMPORTANT: REPLACE THIS
 
             let whatsappMessage = `Hola María, mi nombre es ${name}. `;
             if (phone) {
