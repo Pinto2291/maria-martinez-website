@@ -1,0 +1,74 @@
+.experience-section {
+    background-color: var(--light-color);
+}
+
+.experience-content {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    align-items: center;
+    gap: 3rem;
+}
+
+.experience-image {
+    flex: 1;
+    min-width: 300px; /* Ensure image doesn't get too small */
+}
+
+.experience-image img {
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.experience-image img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 25px rgba(218, 165, 32, 0.25); /* Golden shadow */
+}
+
+.experience-text {
+    flex: 1.5; /* Give more space to text */
+    min-width: 300px;
+}
+
+.experience-text h3 { /* If you add an h3 inside */
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.experience-text p {
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.experience-text strong {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.experience-text ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.experience-text ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+@media (max-width: 992px) {
+    .experience-content {
+        flex-direction: column; /* Stack image and text on medium screens */
+        text-align: center;
+    }
+    .experience-text ul {
+        text-align: left; /* Keep list items left aligned */
+        display: inline-block; /* Center the block of list */
+    }
+}
+
+@media (max-width: 768px) {
+    .experience-text p, .experience-text ul li {
+        font-size: 0.95rem;
+    }
+}

@@ -1,0 +1,153 @@
+.header {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+    height: var(--navbar-height);
+    display: flex;
+    align-items: center;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-logo {
+    font-family: var(--font-primary, 'Georgia', serif);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    transition: color var(--transition-speed);
+}
+
+.navbar-logo:hover {
+    color: var(--secondary-color);
+}
+
+.navbar-menu {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 1.5rem; /* 24px */
+}
+
+.nav-link {
+    color: var(--light-color);
+    font-size: 1rem;
+    padding: 0.5rem 0.8rem;
+    position: relative;
+    transition: color var(--transition-speed);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: width var(--transition-speed);
+}
+
+.nav-link:hover,
+.nav-link.active { /* JavaScript can add 'active' class on scroll */
+    color: var(--primary-color);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.navbar-toggler {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.navbar-toggler-icon {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 5px 0;
+    transition: all var(--transition-speed);
+    border-radius: 2px;
+}
+
+/* Tablet & Mobile Styles for Navbar */
+@media (max-width: 992px) {
+    .navbar-menu {
+        display: none; /* Hide desktop menu */
+        flex-direction: column;
+        position: absolute;
+        top: var(--navbar-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-color);
+        padding: 1rem 0;
+        box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+        border-top: 1px solid var(--primary-color);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0, 1, 0, 1); /* Smooth open/close */
+    }
+
+    .navbar-menu.active {
+        display: flex; /* Show on toggle */
+        max-height: 500px; /* Adjust as needed */
+        transition: max-height 1s ease-in-out; /* Smooth open/close */
+    }
+
+    .nav-item {
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-link {
+        display: block;
+        padding: 1rem;
+        border-bottom: 1px solid rgba(218, 165, 32, 0.2); /* Faint golden line */
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 50%; /* Adjust underline for mobile */
+    }
+    .nav-item:last-child .nav-link {
+        border-bottom: none;
+    }
+
+    .navbar-toggler {
+        display: block; /* Show hamburger icon */
+    }
+
+    /* Hamburger animation */
+    .navbar-toggler.active .navbar-toggler-icon:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .navbar-toggler.active .navbar-toggler-icon:nth-child(2) {
+        opacity: 0;
+    }
+    .navbar-toggler.active .navbar-toggler-icon:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}

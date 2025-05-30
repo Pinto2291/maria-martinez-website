@@ -1,0 +1,24 @@
+@import url('reset.css');
+@import url('variables.css');
+/* If using Google Fonts via CSS import, place it here or in variables.css */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap'); */
+
+@import url('global.css');
+@import url('navbar.css');
+@import url('hero.css');
+@import url('services.css');
+@import url('courses.css');
+@import url('experience.css');
+@import url('social.css');
+@import url('contact.css');
+@import url('footer.css');
+@import url('animations.css');
+
+/* Ensure body has margin-top for fixed navbar if not already handled in a specific section like hero */
+body {
+    padding-top: var(--navbar-height); /* Default for all pages */
+}
+/* Hero section specific padding is already in hero.css to override this if needed */
+#hero {
+    padding-top: 0; /* Override body padding-top for hero */
+}

@@ -1,0 +1,54 @@
+.contact-section {
+    background-color: var(--grey-bg);
+}
+
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: var(--light-color);
+    padding: 2.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form label {
+    font-weight: bold;
+    color: var(--text-color-light-bg);
+    margin-bottom: 0.3rem;
+    display: inline-block;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="tel"],
+.contact-form select,
+.contact-form textarea {
+    background-color: #fdfdfd;
+    border: 1px solid #ddd;
+}
+.contact-form input[type="text"]:focus,
+.contact-form input[type="tel"]:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 5px rgba(218, 165, 32, 0.3); /* Golden glow */
+}
+
+
+.btn-form {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+.btn-form:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--dark-color);
+}
+
+
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 1.5rem;
+    }
+}

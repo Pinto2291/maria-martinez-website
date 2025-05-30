@@ -1,0 +1,44 @@
+/* General link/button animations */
+a, button {
+    /* Base for touch animations - can be refined with JS for :active states */
+    transition: transform 0.15s ease-out, box-shadow 0.2s ease-out, background-color var(--transition-speed), color var(--transition-speed), border-color var(--transition-speed);
+}
+
+/* Example: Button press down effect */
+a:active, button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+/* Link hover animations (already in navbar.css and other components) */
+/* .nav-link:hover, .footer-links a:hover, .social-link:hover ... */
+
+/* Image hover animations (already in services.css, courses.css, experience.css) */
+/* .service-img:hover, .course-img:hover, .experience-image img:hover ... */
+
+
+/* Section Load-in Animation (Optional - can be added to sections) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Add more specific animations as needed */
+.btn:hover, .social-link:hover {
+    animation: buttonPop 0.3s ease-out;
+}
+
+@keyframes buttonPop {
+    0% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.05) translateY(-3px); }
+    100% { transform: scale(1) translateY(-3px); } /* Ends on hover state */
+}
+
+/* For touch devices, :hover might be sticky. JavaScript might be needed for perfect touch animations.
+   However, CSS :active provides basic feedback. */

@@ -1,0 +1,21 @@
+:root {
+    --primary-color: #DAA520; /* Golden */
+    --secondary-color: #FFD700; /* Lighter Gold / Alternative Gold */
+    --dark-color: #000000; /* Black */
+    --light-color: #FFFFFF; /* White */
+    --text-color-dark-bg: #f4f4f4;
+    --text-color-light-bg: #333333;
+    --grey-bg: #f9f9f9;
+
+    --font-primary: 'Playfair Display', serif; /* Example: for headings */
+    --font-secondary: 'Lato', sans-serif;    /* Example: for body text */
+
+    --navbar-height: 70px;
+    --transition-speed: 0.3s ease;
+    --section-padding: 5rem 0; /* 80px top/bottom */
+    --container-width: 1100px;
+    --border-radius: 5px;
+}
+
+/* Import Google Fonts (example) - Add to <head> in HTML or here */
+/* @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap'); */
