@@ -24,7 +24,7 @@
 
 .navbar-logo {
     font-family: var(--font-primary, 'Georgia', serif);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: bold;
     color: var(--primary-color);
     transition: color var(--transition-speed);
@@ -40,7 +40,7 @@
 }
 
 .nav-item {
-    margin-left: 1.5rem; /* 24px */
+    margin-left: 1rem; /* 24px */
 }
 
 .nav-link {
