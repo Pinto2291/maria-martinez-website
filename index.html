@@ -15,6 +15,12 @@
         <nav class="navbar">
             <div class="navbar-container container">
                 <a href="#hero" class="navbar-logo">Maria Martinez</a>
+                <div class="navbar-cart-container">
+                    <a href="#shopping-cart" class="cart-icon-link">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span id="cart-item-count" class="cart-item-count">0</span>
+                    </a>
+                </div>
                 <button class="navbar-toggler" aria-label="Toggle navigation" aria-expanded="false">
                     <span class="navbar-toggler-icon"></span>
                     <span class="navbar-toggler-icon"></span>
@@ -46,25 +52,33 @@
             <div class="container">
                 <h2 class="section-title">Servicios y Productos</h2>
                 <div class="services-grid">
-                    <div class="service-item">
+                    <div class="service-item" data-id="1" data-name="Maquillaje Social" data-price="50">
                         <img src="img/Photos-1-001/maquillaje.jpg" alt="Maquillaje Social Profesional" class="service-img">
                         <h3>Maquillaje Social</h3>
-                        <p>Realza tu belleza para eventos especiales, fiestas y celebraciones. Utilizamos productos de alta calidad.</p>
+                        <p class="service-description">Realza tu belleza para eventos especiales, fiestas y celebraciones. Utilizamos productos de alta calidad.</p>
+                        <p class="service-price">$50.00</p>
+                        <button class="btn btn-primary add-to-cart-btn">Añadir al Carrito</button>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-id="2" data-name="Maquillaje para Novias" data-price="150">
                         <img src="img/IMG_8749.JPG" alt="Maquillaje para Novias" class="service-img">
                         <h3>Maquillaje para Novias</h3>
-                        <p>Un look perfecto y duradero para tu día más especial. Incluye prueba de maquillaje.</p>
+                        <p class="service-description">Un look perfecto y duradero para tu día más especial. Incluye prueba de maquillaje.</p>
+                        <p class="service-price">$150.00</p>
+                        <button class="btn btn-primary add-to-cart-btn">Añadir al Carrito</button>
                     </div>
-                    <div class="service-item">
+                    <div class="service-item" data-id="3" data-name="Tratamientos Faciales" data-price="80">
                         <img src="img/Photos-1-001/IMG-20250529-WA0121.jpg" alt="Tratamientos Faciales" class="service-img">
                         <h3>Tratamientos Faciales</h3>
-                        <p>Limpieza facial profunda, hidratación, tratamientos anti-edad y más para cuidar tu piel.</p>
+                        <p class="service-description">Limpieza facial profunda, hidratación, tratamientos anti-edad y más para cuidar tu piel.</p>
+                        <p class="service-price">$80.00</p>
+                        <button class="btn btn-primary add-to-cart-btn">Añadir al Carrito</button>
                     </div>
                     <div class="service-item">
                         <img src="img/mafer vitamina C.jpg" alt="Venta de Productos de Belleza" class="service-img">
                         <h3>Venta de Productos</h3>
-                        <p>Adquiere los mejores productos de maquillaje y cuidado de la piel recomendados por una profesional.</p>
+                        <p class="service-description">Adquiere los mejores productos de maquillaje y cuidado de la piel recomendados por una profesional.</p>
+                        <p class="service-price">Precio Variable</p>
+                        <a href="#contact" class="btn btn-primary">Consultar</a>
                     </div>
                 </div>
             </div>
@@ -131,6 +145,21 @@
 
                     <!-- <a href="https://wa.me/TUNUMERODEWHATSAPP" target="_blank" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a> -->
 
+                </div>
+            </div>
+        </section>
+
+        <section id="shopping-cart" class="shopping-cart-section section-padding bg-light">
+            <div class="container">
+                <h2 class="section-title">Carrito de Compras</h2>
+                <div id="cart-container" class="cart-container">
+                    <div id="cart-items" class="cart-items">
+                        <p>Tu carrito está vacío.</p>
+                    </div>
+                    <div class="cart-summary">
+                        <p class="cart-total">Total: <span id="cart-total-price">$0.00</span></p>
+                        <button id="checkout-btn" class="btn btn-primary btn-checkout" disabled>Finalizar Compra por WhatsApp</button>
+                    </div>
                 </div>
             </div>
         </section>

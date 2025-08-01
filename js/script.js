@@ -5,6 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
     const sections = document.querySelectorAll('main section[id]'); // For active nav link highlighting
 
+    // --- Shopping Cart Elements ---
+    const cart = [];
+    const servicesGrid = document.querySelector('.services-grid');
+    const cartItemsContainer = document.getElementById('cart-items');
+    const cartTotalPriceEl = document.getElementById('cart-total-price');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const cartItemCount = document.getElementById('cart-item-count');
+    const shoppingCartSection = document.getElementById('shopping-cart');
+
+    // Make sure the cart section has the correct scroll-margin-top
+    const navbarHeight = document.querySelector('.header').offsetHeight;
+    if (shoppingCartSection) {
+        shoppingCartSection.style.scrollMarginTop = `${navbarHeight}px`;
+    }
+
     // Navbar toggle for mobile
     if (navbarToggler && navbarMenu) {
         navbarToggler.addEventListener('click', () => {
@@ -110,6 +125,113 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add .animate-on-scroll class to sections or elements you want to animate in HTML
     // Example: <section id="services" class="services-section section-padding animate-on-scroll">
 
+    // --- Shopping Cart Logic ---
+
+    // Function to render/update the cart display
+    function renderCart() {
+        // Clear current cart items
+        cartItemsContainer.innerHTML = '';
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = '<p>Tu carrito está vacío.</p>';
+            shoppingCartSection.style.display = 'none'; // Hide section if empty
+            checkoutBtn.disabled = true;
+        } else {
+            cart.forEach(item => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.dataset.id = item.id;
+                cartItem.innerHTML = `
+                    <div class="cart-item-details">
+                        <span class="cart-item-name">${item.name}</span>
+                        <span class="cart-item-price">$${item.price.toFixed(2)}</span>
+                    </div>
+                    <button class="btn-remove-item" aria-label="Eliminar ${item.name}">&times;</button>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+            shoppingCartSection.style.display = 'block'; // Show section
+            checkoutBtn.disabled = false;
+        }
+        updateCartTotal();
+        updateCartIcon();
+    }
+
+    // Function to update the total price
+    function updateCartTotal() {
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        cartTotalPriceEl.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // Function to update the cart icon counter
+    function updateCartIcon() {
+        cartItemCount.textContent = cart.length;
+        if (cart.length > 0) {
+            cartItemCount.classList.add('active');
+        } else {
+            cartItemCount.classList.remove('active');
+        }
+    }
+
+    // Event listener for adding items to the cart (using event delegation)
+    if (servicesGrid) {
+        servicesGrid.addEventListener('click', (e) => {
+            if (e.target.classList.contains('add-to-cart-btn')) {
+                const serviceItem = e.target.closest('.service-item');
+                const id = serviceItem.dataset.id;
+
+                const isInCart = cart.some(item => item.id === id);
+                if (isInCart) {
+                    alert('Este servicio ya está en tu carrito.');
+                    return;
+                }
+
+                const name = serviceItem.dataset.name;
+                const price = parseFloat(serviceItem.dataset.price);
+
+                cart.push({ id, name, price });
+                renderCart();
+            }
+        });
+    }
+
+    // Event listener for removing items from the cart (using event delegation)
+    if (cartItemsContainer) {
+        cartItemsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-remove-item')) {
+                const serviceItem = e.target.closest('.cart-item');
+                const id = serviceItem.dataset.id;
+                
+                const itemIndex = cart.findIndex(item => item.id === id);
+                if (itemIndex > -1) {
+                    cart.splice(itemIndex, 1);
+                }
+                renderCart();
+            }
+        });
+    }
+
+    // Event listener for the checkout button
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) return;
+
+            const whatsappNumber = "584243127589"; // Maria's WhatsApp number
+            let invoiceMessage = "Hola María, quisiera solicitar los siguientes servicios:\n\n";
+            
+            let total = 0;
+            cart.forEach(item => {
+                invoiceMessage += `- ${item.name}: $${item.price.toFixed(2)}\n`;
+                total += item.price;
+            });
+
+            invoiceMessage += `\n*Total a Pagar: $${total.toFixed(2)}*`;
+            invoiceMessage += "\n\nPor favor, confírmame la disponibilidad para agendar la cita. ¡Gracias!";
+
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(invoiceMessage)}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    }
 });
 
 // Header scroll effect (optional: make navbar slightly transparent or smaller on scroll)
