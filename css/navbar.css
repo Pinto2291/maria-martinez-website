@@ -103,7 +103,7 @@
         left: 0;
         width: 100%;
         background-color: var(--dark-color);
-        padding: 1rem 0;
+        padding: 0;
         box-shadow: 0 5px 5px rgba(0,0,0,0.2);
         border-top: 1px solid var(--primary-color);
         max-height: 0;
@@ -113,6 +113,7 @@
 
     .navbar-menu.active {
         display: flex; /* Show on toggle */
+        padding: 1rem 0;
         max-height: 500px; /* Adjust as needed */
         transition: max-height 1s ease-in-out; /* Smooth open/close */
     }
